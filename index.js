@@ -33,10 +33,6 @@ let users = [
   },
 ];
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
 app.get("/notes", (req, res) => {
   res.json(notes);
 });
@@ -114,10 +110,10 @@ app.delete("/notes/:id", (req, res) => {
 });
 
 // ✅ Serve React frontend from /frontend/build
-app.use(express.static(path.join(__dirname, "frontend", "build")));
+app.use(express.static(path.join(__dirname, "frontend", "dict")));
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+  res.sendFile(path.join(__dirname, "frontend", "dict", "index.html"));
 });
 
 app.listen(PORT, () => {
