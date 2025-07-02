@@ -113,6 +113,13 @@ app.delete("/notes/:id", (req, res) => {
   res.status(204).send();
 });
 
+// ✅ Serve React frontend from /frontend/build
+app.use(express.static(path.join(__dirname, "frontend", "build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
